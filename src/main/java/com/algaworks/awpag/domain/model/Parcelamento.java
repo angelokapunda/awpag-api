@@ -32,6 +32,12 @@ public class Parcelamento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
+    @ManyToOne
+    @Valid
+    @ConvertGroup(from = Default.class,  to =   ValidationGroups.cozinhaId.class)
+    private Cliente cliente;
+
     @NotBlank
     @Size(max = 20)
     private String descricao;
@@ -47,14 +53,5 @@ public class Parcelamento {
 
     @CreationTimestamp
     private OffsetDateTime dataCriacao;
-
-
-    @NotNull
-    @ManyToOne
-    @Valid
-    @ConvertGroup(from = Default.class,  to =   ValidationGroups.cozinhaId.class)
-    private Cliente cliente;
-
-
 
 }
